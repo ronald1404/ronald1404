@@ -1,4 +1,4 @@
-<h1 align="center">Oi Tudo bem? Eu sou o <a href=" "><i>Ronald Andrade</i></a> 😃️</h1>
+<h1 align="center">Hello, Are you all right? I'm <a><i>Ronald Andrade</i></a> 😃️</h1>
 
 <div align="center">
 
