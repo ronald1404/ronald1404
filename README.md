@@ -30,8 +30,8 @@
   <img align="center" alt="linux" height="50" width="60" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg">
   <img align="center" alt="VSCode" height="50" width="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original-wordmark.svg" />
   <img align="center" alt="Postgre" height="50" width="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-plain-wordmark.svg" />
-  <img align="center" alt="Qt" height="50" width="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/qt/qt-original.svg" />
-  <img align="center" alt="Qt" height="50" width="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg" />
+  <img align="center" alt="Android Studio" height="50" width="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg" />
+  <img align="center" alt="Spring" height="50" width="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original-wordmark.svg" />          
 </div><br>
 
 ##
