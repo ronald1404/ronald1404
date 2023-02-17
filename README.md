@@ -1,4 +1,8 @@
-<h1 align="center">Hello, Are you all right? I'm <a><i>Ronald Andrade</i></a> 😃️</h1>
+
+<div align="center">
+<a href="https://github.com/DenverCoder1/readme-typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Time+New+Roman&color=cyan&size=25&center=true&vCenter=true&width=600&height=100&lines=Hello,+Welcome+to+my+Github+&hearts;++;Are+you+alright?;I'm+Ronald+Andrade!;Always+learning!"></a> 
+</div>
+
 
 <div align="center">
   
