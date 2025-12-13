@@ -2,13 +2,6 @@
 
 #!/bin/bash
 
-set -e
-
-if [ "$EUID" -ne 0 ]; then
-  echo "Execute este script como root (sudo)."
-  exit 1
-fi
-
 echo "Atualizando o sistema..."
 sudo apt update
 sudo apt upgrade -y
@@ -79,25 +72,26 @@ echo "Instalando AWS CLI v2..."
 cd "$TMP_DIR"
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o awscliv2.zip
 unzip awscliv2.zip
-./aws/install
+sudo ./aws/install
 
 echo "Instalando kubectl..."
-curl -LO "https://dl.k8s.io/release/$(curl -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-install -m 0755 kubectl /usr/local/bin/kubectl
+curl -LO "https://dl.k8s.io/release/$(curl -fsSL https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+sudo install -m 0755 kubectl /usr/local/bin/kubectl
 
 echo "Instalando Helm..."
 curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 
 echo "Instalando eksctl..."
 curl -sL https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_Linux_amd64.tar.gz | tar xz -C /tmp
-mv /tmp/eksctl /usr/local/bin
+sudo mv /tmp/eksctl /usr/local/bin
 
 echo "Instalando Terraform e Packer..."
-curl -fsSL https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+curl -fsSL https://apt.releases.hashicorp.com/gpg \
+| sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
 
-echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
-https://apt.releases.hashicorp.com $(lsb_release -cs) main" \
-> /etc/apt/sources.list.d/hashicorp.list
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" \
+| sudo tee /etc/apt/sources.list.d/hashicorp.list >/dev/null
+
 
 sudo apt update
 sudo apt install -y terraform packer
@@ -106,7 +100,7 @@ echo "Instalando Ansible..."
 sudo apt install -y ansible
 
 echo "Limpando arquivos temporários..."
-cd /
+cd ..
 rm -rf "$TMP_DIR"
 
 echo "Instalação concluída. Reinicie a sessão para usar Docker sem sudo."
