@@ -73,7 +73,7 @@ EOF
 sudo apt update
 sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-sudo usermod -aG docker "$SUDO_USER"
+sudo usermod -aG docker $(whoami)
 
 echo "Instalando AWS CLI v2..."
 cd "$TMP_DIR"
