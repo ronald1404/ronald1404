@@ -52,9 +52,9 @@ echo "Baixando Visual Studio Code..."
 wget -O vscode.deb "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
 
 echo "Instalando pacotes .deb..."
-sudo dpkg --install install -y ./google-chrome-stable_current_amd64.deb 
-sudo dpkg --install ./discord.deb 
-sudo dpkg --install ./vscode.deb
+sudo dpkg --install  -y ./google-chrome-stable_current_amd64.deb 
+sudo dpkg --install -y ./discord.deb 
+sudo dpkg --install -y ./vscode.deb
 
 echo "Instalando Docker..."
 
