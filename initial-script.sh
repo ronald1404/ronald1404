@@ -10,11 +10,11 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 echo "Atualizando o sistema..."
-apt update
-apt upgrade -y
+sudo apt update
+sudo apt upgrade -y
 
 echo "Instalando utilitários básicos..."
-apt install -y \
+sudo apt install -y \
   tmux \
   git \
   curl \
@@ -38,7 +38,8 @@ apt install -y \
   software-properties-common
 
 echo "Criando diretório temporário..."
-TMP_DIR=$(mktemp -d)
+TMP_DIR=tmp_install_files
+mkdir $TMP_DIR
 cd "$TMP_DIR"
 
 echo "Baixando Google Chrome..."
@@ -51,26 +52,28 @@ echo "Baixando Visual Studio Code..."
 wget -O vscode.deb "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
 
 echo "Instalando pacotes .deb..."
-apt install -y ./google-chrome-stable_current_amd64.deb ./discord.deb ./vscode.deb
+sudo dpkg --install install -y ./google-chrome-stable_current_amd64.deb 
+sudo dpkg --install ./discord.deb 
+sudo dpkg --install ./vscode.deb
 
 echo "Instalando Docker..."
 
-apt remove -y docker.io docker-doc docker-compose podman-docker containerd runc || true
+sudo apt remove -y docker.io docker-doc docker-compose podman-docker containerd runc || true
 
-install -m 0755 -d /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-chmod a+r /etc/apt/keyrings/docker.asc
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
 
-cat <<EOF >/etc/apt/sources.list.d/docker.list
+sudo cat <<EOF >/etc/apt/sources.list.d/docker.list
 deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] \
 https://download.docker.com/linux/ubuntu \
 $(lsb_release -cs) stable
 EOF
 
-apt update
-apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo apt update
+sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-usermod -aG docker "$SUDO_USER"
+sudo usermod -aG docker "$SUDO_USER"
 
 echo "Instalando AWS CLI v2..."
 cd "$TMP_DIR"
@@ -96,11 +99,11 @@ echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
 https://apt.releases.hashicorp.com $(lsb_release -cs) main" \
 > /etc/apt/sources.list.d/hashicorp.list
 
-apt update
-apt install -y terraform packer
+sudo apt update
+sudo apt install -y terraform packer
 
 echo "Instalando Ansible..."
-apt install -y ansible
+sudo apt install -y ansible
 
 echo "Limpando arquivos temporários..."
 cd /
