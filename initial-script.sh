@@ -26,9 +26,11 @@ sudo apt install -y \
   bind9-utils \
   telnet \
   ca-certificates \
+  neofetch \
   gnupg \
   lsb-release \
-  software-properties-common
+  software-properties-common \
+  gnome-tweak-tool 
 
 echo "Criando diretório temporário..."
 TMP_DIR=tmp_install_files
@@ -62,7 +64,6 @@ sudo tee /etc/apt/sources.list.d/docker.list >/dev/null <<EOF
 deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable
 EOF
 
-
 sudo apt update
 sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
@@ -91,7 +92,6 @@ curl -fsSL https://apt.releases.hashicorp.com/gpg \
 
 echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" \
 | sudo tee /etc/apt/sources.list.d/hashicorp.list >/dev/null
-
 
 sudo apt update
 sudo apt install -y terraform packer
