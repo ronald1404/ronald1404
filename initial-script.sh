@@ -1,3 +1,5 @@
+# curl -fsSL https://raw.githubusercontent.com/ronald1404/ronald1404/refs/heads/main/initial-script.sh | sudo bash
+
 #!/bin/bash
 
 set -e
