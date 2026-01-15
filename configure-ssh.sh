@@ -6,7 +6,7 @@ echo "=== Gerador de chave SSH (ED25519) ==="
 echo
 
 # Pergunta o email
-read -rp "Digite seu email corporativo: " EMAIL
+read -rp "Digite seu email corporativo: " EMAIL < /dev/tty
 
 if [[ -z "$EMAIL" ]]; then
   echo "Erro: email não pode ser vazio."
