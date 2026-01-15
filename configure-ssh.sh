@@ -35,7 +35,7 @@ echo "  $KEY_PATH"
 echo
 
 # Geração da chave
-ssh-keygen -t ed25519 -C "$EMAIL" -f "$KEY_PATH"
+ssh-keygen -t rsa -b 4096 -C "$EMAIL" -f "$KEY_PATH"
 
 # Inicia ssh-agent se necessário
 if ! pgrep -u "$USER" ssh-agent > /dev/null; then
